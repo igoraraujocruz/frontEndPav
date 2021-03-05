@@ -31,9 +31,9 @@ export const Cabecalho = styled.div`
         padding: 60px;
         text-align: center;
         img {
-            width: 80px;
-            height: 80px;
-            border-radius: 30%;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
         }
     }
 `;

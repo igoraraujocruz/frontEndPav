@@ -6,7 +6,7 @@ import Dashboard from './pages/Dashboard'
 const App: React.FC = () => {
   return (
     <>
-      <Dashboard />
+      <Login />
       <GlobalStyle/>
     </>
   );
