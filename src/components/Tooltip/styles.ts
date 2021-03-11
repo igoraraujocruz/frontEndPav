@@ -14,9 +14,9 @@ export const Container = styled.div`
 			transition: opacity 0.4s;
 			visibility: hidden;
 			position: absolute;
-			bottom: calc(100% -12px);
-			left: 50%;
-			transform: translateX(-50%);
+			bottom: calc(100% + 12px);
+			right: -205%;
+			transform: translateY(50%);
 			color: #312e38;
 			
 			&::before {

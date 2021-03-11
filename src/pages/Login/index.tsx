@@ -8,29 +8,48 @@ import { Form } from '@unform/web';
 import * as Yup from 'yup';
 import { FormHandles } from '@unform/core';
 import getValidationErrors from '../../utils/getValidationErrors';
+import {useAuth} from '../../hooks/auth';
+import { useToast } from '../../hooks/toast';
+
+interface LogInFormData {
+    login: string;
+    password: string;
+}
 
 const Login: React.FC = () => {
     const formRef = useRef<FormHandles>(null);
-    const handleSubmit = useCallback(async (data: object) => {
+
+    const { signIn } = useAuth();
+
+    const { addToast } = useToast();
+
+    const handleSubmit = useCallback(async (data: LogInFormData) => {
         try {
             formRef.current?.setErrors({});
             const schema = Yup.object().shape({
                 login: Yup.string().required('Nome obrigatório'),
-                password: Yup.string().min(6,'No mínimo 6 dígitos')
+                password: Yup.string().required('Senha obrigatória')
             });
 
             await schema.validate(data, {
                 abortEarly: false,
             })
-        } catch (err) {
-            console.log(err);
-            
+
+            await signIn({
+                nome: data.login,
+                password: data.password
+            })
+
+        } catch (err) {            
             if (err instanceof Yup.ValidationError) {
                 const errors =  getValidationErrors(err);
                 formRef.current?.setErrors(errors);
-            } 
+
+            }
+            
+        addToast();
         }
-    }, []);
+    }, [signIn, addToast]);
 
     return (
         <Container>

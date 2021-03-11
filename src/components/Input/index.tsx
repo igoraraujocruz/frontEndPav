@@ -36,11 +36,11 @@ const Input: React.FC<InputProps> = ({name, icon: Icon, ...rest}) => {
     
     return (
         <Container isErrored={!!error} isFilled={isFilled} isFocused={isFocused}>
-            {Icon && <Icon size={20} />}
-            <input onFocus={handleInputFocus} onBlur={handleInputBlur} ref={inputRef} {...rest} />
+            {Icon && <Icon size={18} />}
+            <input onFocus={handleInputFocus} onBlur={handleInputBlur} ref={inputRef} {...rest} defaultValue={defaultValue} />
             {error && (
                 <Error title={error}>
-                    <FiAlertCircle color="#c53030" size={20} />
+                    <FiAlertCircle color="#c53030" size={18} />
                 </Error>
             )}
         </Container>
