@@ -5,6 +5,7 @@ import avatar from '../../assets/dois.jpg';
 import {Container, Cabecalho, Corpo, Rodape} from './styles';
 import documentos from '../../assets/paper.svg';
 import loading from '../../assets/loading.svg';
+import Order from './Order';
 import e from '../../assets/e.svg';
 import u from '../../assets/u.svg';
 
@@ -46,7 +47,7 @@ const Dashboard: React.FC = () => {
                 </div>
                 <h2>Internações Eletivas e Urgência</h2>
                 <input type="text" placeholder="Pesquisar Prontuários" />
-                
+                <Order />
             </Cabecalho>
             <Corpo>
                 <table>

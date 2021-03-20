@@ -1,4 +1,15 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const apperFromLeft = keyframes`
+	from {
+		opacity: 0;
+		transform: translateX(-50px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+`;
 
 export const Container = styled.div`
     width: 100%;
@@ -7,6 +18,7 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    animation: ${apperFromLeft} 1s;
 
     form {
         width: 250px;
