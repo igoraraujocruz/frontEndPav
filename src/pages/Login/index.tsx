@@ -12,7 +12,7 @@ import {useAuth} from '../../hooks/auth';
 import { useToast } from '../../hooks/toast';
 
 interface LogInFormData {
-    login: string;
+    name: string;
     password: string;
 }
 
@@ -27,7 +27,7 @@ const Login: React.FC = () => {
         try {
             formRef.current?.setErrors({});
             const schema = Yup.object().shape({
-                login: Yup.string().required('Nome obrigatório'),
+                name: Yup.string().required('Nome obrigatório'),
                 password: Yup.string().required('Senha obrigatória')
             });
 
@@ -36,7 +36,7 @@ const Login: React.FC = () => {
             })
 
             await signIn({
-                nome: data.login,
+                name: data.name,
                 password: data.password
             })
 
@@ -62,7 +62,7 @@ const Login: React.FC = () => {
                 <h1>Atena</h1>
             </Logo>
                 <Form ref={formRef} onSubmit={handleSubmit}>
-                    <Input name="login" icon={FiUser} type="text" placeholder="Usuário"/>
+                    <Input name="name" icon={FiUser} type="text" placeholder="Usuário"/>
                     <Input name="password" icon={FiLock} type="password" placeholder="Senha"/>
                     <Button type="submit">Entrar</Button>
                     <p className="creditos">Desenvolvido por Igor Araujo Cruz</p>
